@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load SVG Example</title>
+</head>
+<body>
+    <div id="svg-container"></div>
+
+    <script>
+        // Fetch the SVG file
+        fetch('Blank_malaysia_map.svg')
+            .then(response => {
+                // Check if the fetch was successful
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();  // Get the text content of the SVG
+            })
+            .then(svg => {
+                // Inject the SVG content into the div
+                document.getElementById('svg-container').innerHTML = svg;
+            })
+            .catch(error => {
+                console.error('Error loading SVG:', error);
+            });
+    </script>
+</body>
+</html>

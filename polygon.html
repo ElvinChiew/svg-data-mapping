@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Double SVG Size on Click</title>
+  <style>
+    svg {
+      width: 200px;
+      height: 200px;
+      transition: transform 0.3s ease; /* Smooth scaling */
+      cursor: pointer;
+    }
+
+    /* Optional: Hover effect to indicate clickable */
+    svg:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" id="mySvg">
+    <path d="M10,10 H90 V90 H10 Z" fill="orange" />
+    <polygon points="50,15 70,85 30,85" fill="green" />
+  </svg>
+
+  <script>
+    const svg = document.getElementById('mySvg');
+
+    svg.addEventListener('click', function() {
+      // Check if the SVG is already scaled up
+      const isScaledUp = svg.style.transform === 'scale(2)';
+      
+      // Reset to normal size if already scaled up
+      svg.style.transform = isScaledUp ? 'scale(1)' : 'scale(2)';
+    });
+  </script>
+</body>
+</html>
